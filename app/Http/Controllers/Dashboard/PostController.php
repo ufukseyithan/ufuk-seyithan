@@ -91,6 +91,16 @@ class PostController extends Controller
         return back();
     }
 
+    public function updateStatus(Request $request, Post $post)
+    {
+        $post->timestamps = false;
+        $post->status = $request->has('status') ? 1 : 0;
+
+        $post->save();
+
+        return back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -1,4 +1,4 @@
-<x-dashboard.layouts.guest>
+<x-layouts.guest>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -33,4 +33,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-dashboard.layouts.guest>
+</x-layouts.guest>

@@ -10,7 +10,7 @@ class PostController extends Controller
     public function index() 
     {
         return view('posts', [
-            'posts' => Post::latest()->paginate(5)
+            'posts' => Post::latest()->where(['status' => '1'])->paginate(5)
         ]);
     }
 

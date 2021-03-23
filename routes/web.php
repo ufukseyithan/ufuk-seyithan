@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home', ['posts' => Post::latest()->take(3)->get()])->name('home');
+Route::view('/', 'home', ['posts' => Post::latest()->where(['status' => '1'])->take(3)->get()])->name('home');
 
 Route::view('/privacy-policy', 'post', ['post' => Post::get()->where('title', 'Privacy Policy')->first()])->name('privacy-policy');
 
@@ -28,6 +28,7 @@ Route::resource('posts', PostController::class)->only([
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
+    Route::put('posts/update-status/{post}', [DashboardPostController::class, 'updateStatus'])->name('posts.update-status');
     Route::resource('posts', DashboardPostController::class)->except([
         'show'
     ]);
