@@ -1,0 +1,1 @@
+<h1 class="bg-black text-white px-2 py-1 uppercase text-2xl font-mono whitespace-nowrap"><a href="{{ route('home') }}">Ufuk S<span class="hidden sm:inline">eyithan </span><span class="inline sm:hidden">.</span>E<span class="hidden sm:inline">rdem</span><span class="inline sm:hidden">.</span></a></h1>
