@@ -1,4 +1,4 @@
-<x-dashboard.layouts.app>
+<x-admin.layouts.app>
     <x-slot name="header">
         {{ __('Dashboard') }}
     </x-slot>
@@ -8,4 +8,4 @@
         <li>See total post views</li>
         <li>See total post counts</li>
     </ul>
-</x-dashboard.layouts.app>
+</x-admin.layouts.app>

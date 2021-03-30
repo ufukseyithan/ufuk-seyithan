@@ -37602,6 +37602,10 @@ header {
           backdrop-filter: blur(20px);
 }
 
+.solid-shadow {
+  box-shadow: black 10px 10px;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -190676,4 +190680,3 @@ header {
             animation: bounce 1s infinite;
   }
 }
-

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -20,7 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts', [
+        return view('admin.posts', [
             'posts' => Post::paginate(25)
         ]);
     }
@@ -32,7 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.create-post');
+        return view('admin.create-post');
     }
 
     /**
@@ -45,12 +46,18 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'image' => 'required|image',
             'content' => 'required'
         ]);
 
+        $imagePath = $request->file('image')->store('post-images', 'public');
+
         $request->user()->posts()->create([
             'title' => $request->title,
-            'content' => $request->content
+            'image_path' => $imagePath,
+            'content' => $request->content,
+            'description' => $request->description,
+            'keywords' => $request->keywords
         ]);
 
         return back();
@@ -64,7 +71,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('dashboard.edit-post', [
+        return view('admin.edit-post', [
             'post' => $post
         ]);
     }
@@ -80,11 +87,22 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'image' => 'image',
             'content' => 'required'
         ]);
 
         $post->title = $request->title;
+
+        if ($request->hasFile('image'))
+        {
+            Storage::delete('public/'.$post->image_path);
+        
+            $post->image_path = $request->file('image')->store('post-images', 'public');
+        }
+
         $post->content = $request->content;
+        $post->description = $request->description;
+        $post->keywords = $request->keywords;
 
         $post->save();
 
@@ -109,6 +127,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        Storage::delete('public/'.$post->image_path);
+        
         $post->delete();
 
         return back();

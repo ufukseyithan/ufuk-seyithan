@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Dashboard\HomeController;
-use App\Http\Controllers\Dashboard\PostController as DashboardPostController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -25,11 +25,19 @@ Route::resource('posts', PostController::class)->only([
     'index', 'show'
 ]);
 
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', function() {
+    return redirect()->route('admin.dashboard');
+});
 
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
-    Route::put('posts/update-status/{post}', [DashboardPostController::class, 'updateStatus'])->name('posts.update-status');
-    Route::resource('posts', DashboardPostController::class)->except([
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('/', function() {
+        return redirect()->route('admin.dashboard');
+    });
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::put('posts/update-status/{post}', [AdminPostController::class, 'updateStatus'])->name('posts.update-status');
+    Route::resource('posts', AdminPostController::class)->except([
         'show'
     ]);
 });

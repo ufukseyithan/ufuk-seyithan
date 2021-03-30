@@ -2,10 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <meta name="description" content="@isset($description){{ $description }}@endisset @empty($description)Welcome to Ufuk Seyithan Erdem's personal website. Here you can find his about me, projects and posts. Have fun getting to know him.@endempty">
+        <meta name="keywords" content="@isset($keywords){{ $keywords }},@endisset Ufuk Seyithan, Ufuk Seyithan Erdem, Ufuk Erdem">
+        <meta name="author" content="Ufuk Seyithan Erdem">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>@isset($title){{ $title }} &#8226;@endisset {{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -36,9 +39,7 @@
                         <span class="hidden lg:inline"><i class="fab fa-discord"></i> Masea#2132</span>
                     </div>
                 </div>
-                
             </header>
-
 
             <main>
                 {{ $slot }}

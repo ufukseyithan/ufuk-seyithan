@@ -6,14 +6,20 @@ use Illuminate\View\Component;
 
 class App extends Component
 {
+    public $title;
+    public $description;
+    public $keywords;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($title = null, $description = null, $keywords = null)
     {
-        //
+        $this->title = $title;
+        $this->description = $description;
+        $this->keywords = $keywords;
     }
 
     /**

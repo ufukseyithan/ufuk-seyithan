@@ -11,9 +11,29 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,500;1,500&family=Roboto:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/fqn71neaueoy7gogyz6z6jt17dklgnq5dzwhz0wyupg2wk4d/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea',
+                height: 500,
+                plugins: 'link image',
+                formats: {
+                    h1: { block: 'h2', classes: 'font-mono text-2xl'},
+                    h2: { block: 'h3', classes: 'font-mono text-xl'},
+                    h3: { block: 'h4', classes: 'font-mono text-lg'},
+                    h4: { block: 'h5', classes: 'font-mono text-md'},
+                    h5: { block: 'h6', classes: 'font-mono text-sm'},
+                },
+                style_formats: [
+                    { title: 'Paragraph', format: 'p' },
+                    { title: 'Heading 1', format: 'h1' },
+                    { title: 'Heading 2', format: 'h2' },
+                    { title: 'Heading 3', format: 'h3' },
+                    { title: 'Heading 4', format: 'h4' },
+                    { title: 'Heading 5', format: 'h5' },
+                ]
+            });
+        </script>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -24,7 +44,7 @@
     
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('dashboard.components.layouts.navigation')
+            @include('admin.components.layouts.navigation')
             
             <!-- Page Heading -->
             <header class="bg-white shadow">

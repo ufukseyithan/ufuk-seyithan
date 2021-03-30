@@ -10,3 +10,7 @@
 header {
     backdrop-filter: blur(20px);
 }
+
+.solid-shadow {
+    box-shadow: black 10px 10px;
+}

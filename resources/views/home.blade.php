@@ -58,19 +58,27 @@
     <section class="bg-black text-white text-center py-8">
         <h2 class="font-mono border-b-2 inline-block">Posts</h2>
     </section>
-    <section class="container py-16 text-xl">
-        <div class="grid gap-8 sm:grid-cols-3 mb-16">
-            @foreach ($posts as $post)
+    <section class="container py-16">
+        <div class="grid gap-8 sm:grid-cols-3">
+            @forelse ($posts as $post)
                 <article class="flex flex-col space-y-2">
-                    <h3 class="font-mono text-2xl">{{ $post->title }}</h3>
+                    <div class="bg-black flex justify-center h-48 bg-opacity-90">
+                        <img src="{{ asset('storage/'.$post->image_path) }}" alt="{{ $post->title }}">
+                    </div>
                     <ul class="text-gray-500 text-sm flex space-x-2">
                         <li><time datetime="{{ $post->created_at }}" title="{{ $post->created_at }}">{{ $post->created_at->diffForHumans() }}</time></li>
                     </ul>
+                    <h3 class="font-mono text-2xl">{{ $post->title }}</h3>
                     <a href="{{ route('posts.show', $post) }}" class="underline">Read</a>
                 </article>
-            @endforeach
+            @empty
+                <p class="text-gray-500">There are currently no posts</p>
+            @endforelse
         </div>
-        <a href="{{ route('posts.index') }}" class="block text-center underline text-xl">View all</a>
+
+        @if (count($posts) > 0)
+            <a href="{{ route('posts.index') }}" class="block text-center underline text-xl mt-16">View all</a>
+        @endif
     </section>
     <section class="bg-yellow-300 text-center text-xl py-16 shadow-2xl">
         <div class="container flex flex-col items-center justify-between space-y-4">

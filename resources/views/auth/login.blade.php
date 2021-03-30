@@ -1,9 +1,7 @@
-<x-layouts.guest>
+<x-layouts.guest title="Log In">
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-logo/>
-            </a>
+            <x-logo/>
         </x-slot>
 
         <!-- Session Status -->
