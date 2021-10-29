@@ -59,7 +59,7 @@
         <h2 class="font-mono border-b-2 inline-block">Posts</h2>
     </section>
     <section class="container py-16">
-        <div class="grid gap-8 sm:grid-cols-3">
+        <div class="grid gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             @forelse ($posts as $post)
                 <article class="flex flex-col space-y-2">
                     <div class="bg-black flex justify-center h-48 bg-opacity-90">
@@ -82,8 +82,8 @@
     </section>
     <section class="bg-yellow-300 text-center text-xl py-16 shadow-2xl">
         <div class="container flex flex-col items-center justify-between space-y-4">
-            <h3 class="text-xl font-mono">Everyone needs to do something for a living...</h3>
-            <a href="mailto:me@ufukseyithanerdem.com" class="bg-black text-white px-2 py-1 font-mono uppercase">Talk Business</a>
+            <h3 class="text-xl font-mono">Anything to talk?</h3>
+            <a href="mailto:me@ufukseyithanerdem.com" class="bg-black text-white px-2 py-1 font-mono uppercase">Email Me</a>
         </div>
     </section>
 </x-layouts.app>

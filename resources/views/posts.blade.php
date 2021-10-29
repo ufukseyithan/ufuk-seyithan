@@ -1,5 +1,5 @@
 <x-layouts.app title="Posts">
-    <section class="container py-8 sm:py-16">
+    <section class="container py-8 sm:py-16 sm:w-1/2">
         <div class="grid gap-8 mb-4">
             @forelse ($posts as $post)
                 <article class="flex flex-col space-y-2 text-lg">

@@ -11,12 +11,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,500;1,500&family=Roboto:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdn.tiny.cloud/1/fqn71neaueoy7gogyz6z6jt17dklgnq5dzwhz0wyupg2wk4d/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script>
             tinymce.init({
                 selector: 'textarea',
                 height: 500,
-                plugins: 'link image',
+                plugins: 'link image lists',
+                toolbar: 'undo redo | formatselect | ' +
+                        'bold italic backcolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'removeformat | help',
                 formats: {
                     h1: { block: 'h2', classes: 'font-mono text-2xl'},
                     h2: { block: 'h3', classes: 'font-mono text-xl'},

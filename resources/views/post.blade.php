@@ -1,7 +1,7 @@
 <x-layouts.app :title="$post->title" :description="$post->description" :keywords="$post->keywords">
-    <section>
+    <section class="container pt-8">
         <img src="{{ asset('storage/'.$post->image_path) }}" alt="{{ $post->title }}" class="mb-4 w-full">
-        <article class="container flex flex-col space-y-4">
+        <article class="flex flex-col space-y-8">
             <ul class="text-gray-500 text-sm flex space-x-2 whitespace-nowrap overflow-x-auto">
                 <li><time datetime="{{ $post->created_at }}" title="{{ $post->created_at }}">Posted {{ $post->created_at->diffForHumans() }}</time></li>
                 @if ($post->created_at != $post->updated_at)
